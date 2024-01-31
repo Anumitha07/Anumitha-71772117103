@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comment</title>
+    <style>
+        body {
+    font-family:'Times New Roman', Times, serif;
+    margin-left: 10px;
+    padding: 10px;
+    background-image: url("img.jpg");
+    width:30%;
+    height:40%;
+  background-repeat: no-repeat;
+  background-position: right top;
+  margin-right: 200px;
+  background-attachment: fixed;
+  
+}
+
+.comment-section {
+    display:contents;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    
+}
+
+.comment-section h2 {
+    font-size: 24px;
+}
+
+.comment-form input[type="text"],
+.comment-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-attachment: fixed;
+}
+
+.comment-form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #e4d9d9;
+    border: none;
+    cursor: pointer;
+}
+
+.comment-form button:hover {
+    background-color: #0056b3;
+}
+
+.comment {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+
+</style>
+<script>
+    function addComment() {
+    var nameInput = document.getElementById('comment-name');
+    
+    var contentInput = document.getElementById('comment-content');
+    var commentsContainer = document.getElementById('container');
+
+    var name = nameInput.value;
+    var content = contentInput.value;
+
+    if (name && content) {
+        
+        var commentDiv = document.createElement('div');
+
+        commentDiv.classList.add('comment');
+
+        var nameHeader = document.createElement('h4');
+        nameHeader.textContent = name;
+
+        var contentPara = document.createElement('p');
+        contentPara.textContent = content;
+
+        commentDiv.appendChild(nameHeader);
+        commentDiv.appendChild(contentPara);
+        commentsContainer.appendChild(commentDiv);
+        nameInput.value = '';
+        contentInput.value = '';
+    } else {
+        alert('Please enter both your name and comment.');
+    }
+}
+
+</script>
+</head>
+<body>
+    <div class="comment-section">
+        <h2>Comments</h2>
+        <div id="container">
+        </div>
+        <div class="comment-form">
+
+            <input type="text" id="comment-name" placeholder="Your Name">
+            <textarea id="comment-content" placeholder="Your Comment"></textarea>
+            <button onclick="addComment()">Post Comment</button>
+        </div>
+    </div>
+
+</body>
+</html>
